@@ -7,7 +7,7 @@ export function StudioAboutPage() {
       <h1>Ne predstavljamo agenciju sa velikim timom, vec malu partnersku ekipu koja licno vodi razvoj.</h1>
       <p className="page-lead">
         To je nasa prednost. Klijenti dobijaju direktnu komunikaciju, brze
-        odluke i ljude koji istovremeno razumeju `.NET`, `Azure` i frontend
+        odluke i ljude koji istovremeno razumeju .NET, Azure i frontend
         deo proizvoda.
       </p>
 
