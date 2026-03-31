@@ -159,6 +159,7 @@ ul {
   display: inline-flex;
   gap: 10px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .nav-link {
@@ -185,6 +186,23 @@ ul {
   background: var(--surface-strong);
   border-color: rgba(191, 91, 44, 0.24);
   color: var(--accent-dark);
+}
+
+.nav-button {
+  cursor: pointer;
+}
+
+.nav-user-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid rgba(191, 91, 44, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--accent-dark);
+  font-size: 0.92rem;
+  font-weight: 600;
 }
 
 .page-content {
@@ -468,6 +486,161 @@ h3 {
   background: linear-gradient(135deg, rgba(255, 247, 238, 0.95), rgba(245, 225, 194, 0.82));
 }
 
+.login-page {
+  display: grid;
+  align-items: center;
+}
+
+.login-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  gap: 24px;
+  width: 100%;
+}
+
+.login-copy,
+.login-card,
+.login-benefit-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  backdrop-filter: blur(10px);
+}
+
+.login-copy {
+  display: grid;
+  align-content: start;
+  gap: 18px;
+  padding: 34px;
+}
+
+.login-benefits {
+  display: grid;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.login-benefit-card {
+  padding: 22px;
+}
+
+.login-benefit-card p,
+.login-meta,
+.form-field span,
+.inline-link {
+  color: var(--muted);
+}
+
+.login-card {
+  display: grid;
+  gap: 18px;
+  padding: 34px;
+  background:
+    linear-gradient(180deg, rgba(255, 250, 241, 0.96), rgba(245, 225, 194, 0.88)),
+    var(--surface);
+}
+
+.login-card-head {
+  display: grid;
+  gap: 6px;
+}
+
+.form-field {
+  display: grid;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.form-field input {
+  width: 100%;
+  min-height: 54px;
+  padding: 0 16px;
+  border: 1px solid rgba(80, 52, 27, 0.16);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--text);
+  outline: none;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+}
+
+.form-field input::placeholder {
+  color: rgba(106, 86, 72, 0.72);
+}
+
+.form-field input:focus {
+  border-color: rgba(191, 91, 44, 0.5);
+  box-shadow: 0 0 0 4px rgba(191, 91, 44, 0.12);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.form-field .input-error {
+  border-color: rgba(166, 52, 52, 0.45);
+  box-shadow: 0 0 0 4px rgba(166, 52, 52, 0.08);
+}
+
+.field-error {
+  color: #9f3d34;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.login-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.checkbox-field {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+}
+
+.checkbox-field input {
+  accent-color: var(--accent);
+}
+
+.inline-link {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.login-submit {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.login-submit:disabled {
+  cursor: wait;
+  opacity: 0.9;
+}
+
+.form-status {
+  padding: 14px 16px;
+  border: 1px solid rgba(191, 91, 44, 0.18);
+  border-radius: 16px;
+  background: rgba(255, 248, 241, 0.8);
+  color: var(--accent-dark);
+}
+
+.form-status-error {
+  border-color: rgba(166, 52, 52, 0.18);
+  background: rgba(255, 244, 242, 0.9);
+  color: #8b2e2e;
+}
+
+.login-meta a,
+.inline-link:hover,
+.inline-link:focus-visible {
+  color: var(--accent-dark);
+}
+
 .not-found-page {
   display: grid;
   gap: 20px;
@@ -510,7 +683,8 @@ h3 {
   .folder-grid,
   .contact-panel,
   .story-section,
-  .cta-section {
+  .cta-section,
+  .login-shell {
     grid-template-columns: 1fr;
   }
 
@@ -523,7 +697,9 @@ h3 {
   .folder-card,
   .contact-panel,
   .story-card,
-  .cta-section {
+  .cta-section,
+  .login-copy,
+  .login-card {
     padding: 22px;
   }
 

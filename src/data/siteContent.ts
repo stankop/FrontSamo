@@ -1,4 +1,6 @@
-export const services = [
+import type { ContactCard, ProcessStep, Service, TeamMember } from './types'
+
+export const services: Service[] = [
   {
     title: '.NET razvoj',
     description:
@@ -22,7 +24,7 @@ export const differentiators = [
   'Volimo projekte gde treba razumeti i biznis problem, ne samo napisati kod.',
 ]
 
-export const teamMembers = [
+export const teamMembers: TeamMember[] = [
   {
     role: 'Programer 01',
     focus: '.NET i Azure',
@@ -35,7 +37,7 @@ export const teamMembers = [
   },
 ]
 
-export const processSteps = [
+export const processSteps: ProcessStep[] = [
   {
     title: 'Upoznajemo proizvod',
     description:
@@ -59,13 +61,13 @@ export const trustPoints = [
   'Spoj tehnickog kvaliteta i poslovnog razumevanja.',
 ]
 
-export const contactCards = [
+export const contactCards: ContactCard[] = [
   {
     title: 'Za nove projekte',
     text: 'Ako planirate novu aplikaciju, MVP ili modernizaciju postojeceg sistema, ovo je pravo mesto za prvi razgovor.',
   },
   {
     title: 'Za postojece proizvode',
-    text: 'Ako vec imate proizvod, mozemo da uskocimo na backend, Azure ili frontend deo i ubrzamo isporuku.',
+    text: 'Ako vec imate proizvod, mozemo usko uskočiti na backend, Azure ili frontend deo i ubrzati isporuku.',
   },
 ]
