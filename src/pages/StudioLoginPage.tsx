@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { login } from '../features/auth/api'
 import { useAuth } from '../features/auth/useAuth'
+import { useLanguage } from '../features/i18n/useLanguage'
 import {
   initialLoginFormValues,
   validateLoginForm,
@@ -22,6 +23,7 @@ type LoginLocationState = {
 
 export function StudioLoginPage() {
   const { setSession } = useAuth()
+  const { t } = useLanguage()
   const location = useLocation()
   const navigate = useNavigate()
   const [values, setValues] = useState<LoginFormValues>(initialLoginFormValues)
@@ -31,9 +33,9 @@ export function StudioLoginPage() {
 
   const locationState = location.state as LoginLocationState | null
   const redirectTo =
-    locationState?.from?.pathname && locationState.from.pathname !== '/prijava'
+    locationState?.from?.pathname && locationState.from.pathname !== t.routes.login
       ? locationState.from.pathname
-      : '/dashboard'
+      : t.routes.dashboard
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     const { name, type, checked, value } = event.target
@@ -61,11 +63,11 @@ export function StudioLoginPage() {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
-    const validationErrors = validateLoginForm(values)
+    const validationErrors = validateLoginForm(values, t.login.validation)
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors)
-      setStatusMessage('Proverite polja oznacena ispod forme.')
+      setStatusMessage(t.login.invalidForm)
       return
     }
 
@@ -91,7 +93,7 @@ export function StudioLoginPage() {
         setErrors(apiError.fieldErrors)
       }
 
-      setStatusMessage(apiError.message ?? 'Prijava nije uspela. Pokusajte ponovo.')
+      setStatusMessage(apiError.message ?? t.login.requestFailed)
     } finally {
       setIsSubmitting(false)
     }
@@ -101,41 +103,37 @@ export function StudioLoginPage() {
     <section className="content-page login-page">
       <div className="login-shell">
         <div className="login-copy">
-          <p className="eyebrow">Prijava</p>
-          <h1>Prijavite se i nastavite tamo gde ste stali.</h1>
-          <p className="page-lead">
-            Forma je spremna za povezivanje sa pravim API-jem, a za sada daje
-            uredan ekran za prijavu sa jasnom strukturom i validnim input
-            elementima.
-          </p>
+          <p className="eyebrow">{t.login.eyebrow}</p>
+          <h1>{t.login.title}</h1>
+          <p className="page-lead">{t.login.lead}</p>
 
           <div className="login-benefits">
             <div className="login-benefit-card">
-              <span className="member-role">Brz pristup</span>
-              <p>Udjite u dashboard, pregled zadataka i internu dokumentaciju.</p>
+              <span className="member-role">{t.login.benefitOneLabel}</span>
+              <p>{t.login.benefitOneText}</p>
             </div>
             <div className="login-benefit-card">
-              <span className="member-role">Sigurno iskustvo</span>
-              <p>Kasnije ovde mozemo dodati reset lozinke, 2FA i social login.</p>
+              <span className="member-role">{t.login.benefitTwoLabel}</span>
+              <p>{t.login.benefitTwoText}</p>
             </div>
           </div>
         </div>
 
         <form className="login-card" noValidate onSubmit={handleSubmit}>
           <div className="login-card-head">
-            <p className="panel-label">Dobrodosli nazad</p>
-            <h2>Unesite svoje podatke</h2>
+            <p className="panel-label">{t.login.formLabel}</p>
+            <h2>{t.login.formTitle}</h2>
           </div>
 
           <label className="form-field">
-            <span>Email adresa</span>
+            <span>{t.login.emailLabel}</span>
             <input
               autoComplete="email"
               className={errors.email ? 'input-error' : ''}
               value={values.email}
               onChange={handleChange}
               name="email"
-              placeholder="ime@firma.com"
+              placeholder={t.login.emailPlaceholder}
               type="email"
               aria-invalid={Boolean(errors.email)}
               aria-describedby={errors.email ? 'email-error' : undefined}
@@ -148,14 +146,14 @@ export function StudioLoginPage() {
           </label>
 
           <label className="form-field">
-            <span>Lozinka</span>
+            <span>{t.login.passwordLabel}</span>
             <input
               autoComplete="current-password"
               className={errors.password ? 'input-error' : ''}
               value={values.password}
               onChange={handleChange}
               name="password"
-              placeholder="Unesite lozinku"
+              placeholder={t.login.passwordPlaceholder}
               type="password"
               aria-invalid={Boolean(errors.password)}
               aria-describedby={errors.password ? 'password-error' : undefined}
@@ -175,11 +173,11 @@ export function StudioLoginPage() {
                 onChange={handleChange}
                 type="checkbox"
               />
-              <span>Zapamti me</span>
+              <span>{t.login.remember}</span>
             </label>
 
-            <Link className="inline-link" to="/kontakt">
-              Zaboravljena lozinka?
+            <Link className="inline-link" to={t.routes.contact}>
+              {t.login.forgotPassword}
             </Link>
           </div>
 
@@ -196,11 +194,11 @@ export function StudioLoginPage() {
           ) : null}
 
           <button className="primary-button login-submit" type="submit" disabled={isSubmitting}>
-            {isSubmitting ? 'Prijavljivanje...' : 'Prijavi se'}
+            {isSubmitting ? t.login.submitting : t.login.submit}
           </button>
 
           <p className="login-meta">
-            Nemate nalog? <Link to="/kontakt">Javite nam se</Link>
+            {t.login.noAccount} <Link to={t.routes.contact}>{t.login.contactUs}</Link>
           </p>
         </form>
       </div>

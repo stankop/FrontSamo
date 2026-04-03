@@ -1,48 +1,37 @@
 import { Link } from 'react-router-dom'
-import {
-  differentiators,
-  processSteps,
-  services,
-  teamMembers,
-  trustPoints,
-} from '../data/companyContent'
+import { useLanguage } from '../features/i18n/useLanguage'
 
 export function StudioHomePage() {
+  const { t } = useLanguage()
+  const { services, differentiators, teamMembers, processSteps, trustPoints } = t.content
+
   return (
     <div className="home-page">
       <section className="hero-section">
         <div className="hero-copy">
-          <p className="eyebrow">.NET, Azure i frontend studio</p>
-          <h1>Gradimo moderne poslovne aplikacije kao mali tim od dva developera.</h1>
-          <p className="hero-text">
-            Pomazemo klijentima da od ideje ili postojeceg proizvoda dodju do
-            stabilnog softvera, jasne cloud arhitekture i frontend iskustva koje
-            izgleda profesionalno i radi brzo.
-          </p>
+          <p className="eyebrow">{t.home.eyebrow}</p>
+          <h1>{t.home.title}</h1>
+          <p className="hero-text">{t.home.description}</p>
           <div className="hero-actions">
-            <Link className="primary-button" to="/o-projektu">
-              Upoznajte nas bolje
+            <Link className="primary-button" to={t.routes.about}>
+              {t.home.primaryCta}
             </Link>
-            <Link className="secondary-button" to="/kontakt">
-              Pokrenimo razgovor
+            <Link className="secondary-button" to={t.routes.contact}>
+              {t.home.secondaryCta}
             </Link>
           </div>
         </div>
 
-        <aside className="hero-panel" aria-label="Pregled usluga">
-          <p className="panel-label">Glavne oblasti</p>
+        <aside className="hero-panel" aria-label={t.home.heroPanelAriaLabel}>
+          <p className="panel-label">{t.home.heroPanelLabel}</p>
           <ul className="stack-list">
-            <li>.NET backend</li>
-            <li>Azure infrastruktura</li>
-            <li>Web aplikacije i frontend</li>
-            <li>Direktna saradnja sa klijentom</li>
+            {t.home.heroPanelItems.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
           </ul>
           <div className="code-card">
-            <span>Za koga radimo</span>
-            <strong>
-              Startupi, SaaS proizvodi, interni alati i firme koje zele pouzdan
-              razvojni tim.
-            </strong>
+            <span>{t.home.targetLabel}</span>
+            <strong>{t.home.targetText}</strong>
           </div>
         </aside>
       </section>
@@ -58,8 +47,8 @@ export function StudioHomePage() {
 
       <section className="team-section">
         <div>
-          <p className="eyebrow">Ko stoji iza projekta</p>
-          <h2>Dvojica developera koja pokrivaju ceo put od API-ja do korisnickog interfejsa.</h2>
+          <p className="eyebrow">{t.home.teamEyebrow}</p>
+          <h2>{t.home.teamTitle}</h2>
         </div>
         <div className="team-grid">
           {teamMembers.map((member) => (
@@ -74,8 +63,8 @@ export function StudioHomePage() {
 
       <section className="roadmap-section">
         <div>
-          <p className="eyebrow">Zasto klijenti biraju mali tim</p>
-          <h2>Dobijate fokus, brzinu i direktan kontakt sa ljudima koji stvarno rade na proizvodu.</h2>
+          <p className="eyebrow">{t.home.differentiatorsEyebrow}</p>
+          <h2>{t.home.differentiatorsTitle}</h2>
         </div>
         <ul className="roadmap-list">
           {differentiators.map((item) => (
@@ -86,8 +75,8 @@ export function StudioHomePage() {
 
       <section className="process-section">
         <div className="section-heading">
-          <p className="eyebrow">Kako radimo</p>
-          <h2>Proces je jednostavan, pregledan i usmeren na rezultat.</h2>
+          <p className="eyebrow">{t.home.processEyebrow}</p>
+          <h2>{t.home.processTitle}</h2>
         </div>
         <div className="process-grid">
           {processSteps.map((step) => (
@@ -99,7 +88,7 @@ export function StudioHomePage() {
         </div>
       </section>
 
-      <section className="trust-strip" aria-label="Klijentske vrednosti">
+      <section className="trust-strip" aria-label={t.home.trustStripAriaLabel}>
         {trustPoints.map((point) => (
           <div key={point} className="trust-pill">
             {point}
@@ -109,11 +98,11 @@ export function StudioHomePage() {
 
       <section className="cta-section">
         <div>
-          <p className="eyebrow">Imate ideju ili postojeci proizvod</p>
-          <h2>Hajde da vidimo kako mozemo da pomognemo na backendu, cloudu ili frontendu.</h2>
+          <p className="eyebrow">{t.home.ctaEyebrow}</p>
+          <h2>{t.home.ctaTitle}</h2>
         </div>
-        <Link className="primary-button" to="/kontakt">
-          Kontakt strana
+        <Link className="primary-button" to={t.routes.contact}>
+          {t.home.ctaButton}
         </Link>
       </section>
     </div>

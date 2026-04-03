@@ -1,27 +1,22 @@
+import { useLanguage } from '../features/i18n/useLanguage'
+
 export function StudioDashboardPage() {
+  const { t } = useLanguage()
+
   return (
     <section className="content-page">
-      <p className="eyebrow">Dashboard</p>
-      <h1>Ovo je zasticena stranica dostupna samo prijavljenim korisnicima.</h1>
-      <p className="page-lead">
-        Ovde kasnije mozemo da prikazemo pregled naloga, internih zadataka,
-        dokumenata ili bilo kog sadrzaja koji treba da bude iza prijave.
-      </p>
+      <p className="eyebrow">{t.dashboard.eyebrow}</p>
+      <h1>{t.dashboard.title}</h1>
+      <p className="page-lead">{t.dashboard.lead}</p>
 
       <section className="story-section">
         <article className="story-card">
-          <h2>Sta sada radi</h2>
-          <p>
-            Ako korisnik nije prijavljen, protected route ga salje na login
-            stranicu. Ako jeste, moze normalno da otvori dashboard.
-          </p>
+          <h2>{t.dashboard.currentTitle}</h2>
+          <p>{t.dashboard.currentText}</p>
         </article>
         <article className="story-card">
-          <h2>Sledeci korak</h2>
-          <p>
-            Sledece ovde mozemo da povucemo korisnicke podatke sa API-ja i
-            prikazemo pravi privatni sadrzaj.
-          </p>
+          <h2>{t.dashboard.nextTitle}</h2>
+          <p>{t.dashboard.nextText}</p>
         </article>
       </section>
     </section>

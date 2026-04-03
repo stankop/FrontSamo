@@ -1,15 +1,14 @@
-import { teamMembers } from '../data/companyContent'
+import { useLanguage } from '../features/i18n/useLanguage'
 
 export function StudioAboutPage() {
+  const { t } = useLanguage()
+  const { teamMembers } = t.content
+
   return (
     <section className="content-page">
-      <p className="eyebrow">O nama</p>
-      <h1>Ne predstavljamo agenciju sa velikim timom, vec malu partnersku ekipu koja licno vodi razvoj.</h1>
-      <p className="page-lead">
-        To je nasa prednost. Klijenti dobijaju direktnu komunikaciju, brze
-        odluke i ljude koji istovremeno razumeju .NET, Azure i frontend
-        deo proizvoda.
-      </p>
+      <p className="eyebrow">{t.about.eyebrow}</p>
+      <h1>{t.about.title}</h1>
+      <p className="page-lead">{t.about.lead}</p>
 
       <div className="folder-grid">
         {teamMembers.map((member) => (
@@ -23,19 +22,12 @@ export function StudioAboutPage() {
 
       <section className="story-section">
         <article className="story-card">
-          <h2>Sta klijenti mogu da ocekuju</h2>
-          <p>
-            Jasno definisan opseg rada, redovne isporuke, tehnicke odluke koje
-            imaju smisla i kod koji moze dalje da se odrzava i razvija.
-          </p>
+          <h2>{t.about.expectationsTitle}</h2>
+          <p>{t.about.expectationsText}</p>
         </article>
         <article className="story-card">
-          <h2>Kakve projekte volimo</h2>
-          <p>
-            SaaS proizvode, interne platforme, B2B alate, modernizaciju starih
-            sistema i sve situacije gde backend, cloud i frontend moraju da
-            rade kao jedna celina.
-          </p>
+          <h2>{t.about.projectsTitle}</h2>
+          <p>{t.about.projectsText}</p>
         </article>
       </section>
     </section>

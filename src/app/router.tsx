@@ -18,15 +18,15 @@ export const router = createBrowserRouter([
         element: <StudioHomePage />,
       },
       {
-        path: 'o-projektu',
+        path: 'about',
         element: <StudioAboutPage />,
       },
       {
-        path: 'kontakt',
+        path: 'contact',
         element: <StudioContactPage />,
       },
       {
-        path: 'prijava',
+        path: 'login',
         element: <StudioLoginPage />,
       },
     ],

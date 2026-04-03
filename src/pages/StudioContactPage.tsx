@@ -1,15 +1,14 @@
-import { contactCards } from '../data/companyContent'
+import { useLanguage } from '../features/i18n/useLanguage'
 
 export function StudioContactPage() {
+  const { t } = useLanguage()
+  const { contactCards } = t.content
+
   return (
     <section className="content-page">
-      <p className="eyebrow">Kontakt</p>
-      <h1>Najbolji prvi korak je kratak razgovor o vasem proizvodu, timu i prioritetima.</h1>
-      <p className="page-lead">
-        Ovde kasnije mozemo da dodamo pravu formu, email adresu, Calendly
-        link ili direktan poziv na konsultacije. Za sada je stranica postavljena
-        kao jasan CTA ekran.
-      </p>
+      <p className="eyebrow">{t.contact.eyebrow}</p>
+      <h1>{t.contact.title}</h1>
+      <p className="page-lead">{t.contact.lead}</p>
 
       <div className="contact-panel">
         {contactCards.map((card) => (
@@ -22,18 +21,12 @@ export function StudioContactPage() {
 
       <section className="story-section">
         <article className="story-card">
-          <h2>Sta nam je korisno da znamo</h2>
-          <p>
-            Faza projekta, rokovi, postojeci stack, glavni poslovni cilj i gde
-            vam trenutno treba najveca pomoc.
-          </p>
+          <h2>{t.contact.usefulTitle}</h2>
+          <p>{t.contact.usefulText}</p>
         </article>
         <article className="story-card">
-          <h2>Sta vi dobijate</h2>
-          <p>
-            Realan predlog saradnje, tehnicki smer i procenu kako da naredni
-            koraci budu sto jednostavniji i isplativiji.
-          </p>
+          <h2>{t.contact.outcomeTitle}</h2>
+          <p>{t.contact.outcomeText}</p>
         </article>
       </section>
     </section>

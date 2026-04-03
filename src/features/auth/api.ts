@@ -27,7 +27,7 @@ export async function login(request: LoginRequestDto): Promise<LoginResponseDto>
     }
 
     throw {
-      message: 'Prijava nije uspela. Pokusajte ponovo.',
+      message: 'Login failed. Please try again.',
     } satisfies ApiError
   }
 
