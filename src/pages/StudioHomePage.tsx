@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import heroImage from '../assets/hero.png'
 import { useLanguage } from '../features/i18n/useLanguage'
 
 export function StudioHomePage() {
@@ -54,7 +55,13 @@ export function StudioHomePage() {
 
               <div className="hero-screen hero-screen-center">
                 <div className="hero-screen-badge">{t.home.targetLabel}</div>
-                <strong>{t.home.targetText}</strong>
+                <div className="hero-image-shell">
+                  <img
+                    alt="Remotum showcase preview"
+                    className="hero-image"
+                    src={heroImage}
+                  />
+                </div>
                 <div className="hero-screen-grid">
                   {services.map((item) => (
                     <div key={item.title} className="hero-screen-grid-card">

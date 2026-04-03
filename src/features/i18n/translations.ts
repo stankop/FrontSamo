@@ -25,12 +25,12 @@
         en: 'Engleski',
       },
     },
-    footer: {
-      line1:
-        'FrontSamo je landing osnova za vas studio i lako se dalje siri sa pravim kontakt podacima i referencama.',
-      line2:
-        'Sledece mozemo dodati imena, slike, klijente, projekte i formu za upit.',
-    },
+      footer: {
+        line1:
+          'Remotum je osnova za moderan studio sajt i lako se dalje siri sa pravim kontakt podacima, referencama i prodajnim sekcijama.',
+        line2:
+          'Sledece mozemo dodati imena, slike, klijente, projekte i formu za upit.',
+      },
     home: {
       eyebrow: '.NET, Azure i frontend studio',
       title: 'Gradimo moderne poslovne aplikacije kao mali tim od dva developera.',
@@ -231,12 +231,12 @@
         en: 'English',
       },
     },
-    footer: {
-      line1:
-        'FrontSamo is a landing page foundation for your studio and can easily grow with real contact details and references.',
-      line2:
-        'Next, we can add names, photos, clients, projects, and an inquiry form.',
-    },
+      footer: {
+        line1:
+          'Remotum is a strong foundation for a modern studio site and can easily grow with real contact details, references, and sales sections.',
+        line2:
+          'Next, we can add names, photos, clients, projects, and an inquiry form.',
+      },
     home: {
       eyebrow: '.NET, Azure, and frontend studio',
       title: 'We build modern business applications as a focused team of two developers.',

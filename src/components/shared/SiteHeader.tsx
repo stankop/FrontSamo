@@ -36,9 +36,13 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <NavLink className="brand" to={t.routes.home}>
-        <span className="brand-mark">FS</span>
+        <span className="brand-mark" aria-hidden="true">
+          <span className="brand-mark-core">R</span>
+          <span className="brand-mark-orbit brand-mark-orbit-one" />
+          <span className="brand-mark-orbit brand-mark-orbit-two" />
+        </span>
         <span className="brand-copy">
-          <strong>FrontSamo</strong>
+          <strong>Remotum</strong>
           <small>{t.header.brandTagline}</small>
         </span>
       </NavLink>
