@@ -9,9 +9,15 @@ export function StudioHomePage() {
     <div className="home-page">
       <section className="hero-section">
         <div className="hero-copy">
+          <div className="hero-copy-topline" />
           <p className="eyebrow">{t.home.eyebrow}</p>
           <h1>{t.home.title}</h1>
           <p className="hero-text">{t.home.description}</p>
+          <div className="hero-signal-row" aria-hidden="true">
+            <span className="hero-signal-dot" />
+            <span className="hero-signal-line" />
+            <span className="hero-signal-dot" />
+          </div>
           <div className="hero-actions">
             <Link className="primary-button" to={t.routes.about}>
               {t.home.primaryCta}
@@ -23,15 +29,56 @@ export function StudioHomePage() {
         </div>
 
         <aside className="hero-panel" aria-label={t.home.heroPanelAriaLabel}>
-          <p className="panel-label">{t.home.heroPanelLabel}</p>
-          <ul className="stack-list">
-            {t.home.heroPanelItems.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-          <div className="code-card">
-            <span>{t.home.targetLabel}</span>
-            <strong>{t.home.targetText}</strong>
+          <div className="hero-panel-frame">
+            <div className="hero-panel-glow hero-panel-glow-top" />
+            <div className="hero-panel-glow hero-panel-glow-bottom" />
+            <div className="hero-panel-head">
+              <p className="panel-label">{t.home.heroPanelLabel}</p>
+              <div className="hero-panel-pills">
+                <span>01</span>
+                <span>02</span>
+                <span>03</span>
+              </div>
+            </div>
+
+            <div className="hero-showcase">
+              <div className="hero-screen hero-screen-left">
+                {t.home.heroPanelItems.slice(0, 2).map((item) => (
+                  <div key={item} className="hero-mini-card">
+                    <span className="hero-mini-label">{item}</span>
+                    <div className="hero-mini-line" />
+                    <div className="hero-mini-line hero-mini-line-short" />
+                  </div>
+                ))}
+              </div>
+
+              <div className="hero-screen hero-screen-center">
+                <div className="hero-screen-badge">{t.home.targetLabel}</div>
+                <strong>{t.home.targetText}</strong>
+                <div className="hero-screen-grid">
+                  {services.map((item) => (
+                    <div key={item.title} className="hero-screen-grid-card">
+                      <span>{item.title}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="hero-screen hero-screen-right">
+                {t.home.heroPanelItems.slice(2).map((item) => (
+                  <div key={item} className="hero-mini-card hero-mini-card-dark">
+                    <span className="hero-mini-label">{item}</span>
+                    <div className="hero-mini-line" />
+                    <div className="hero-mini-line hero-mini-line-short" />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="code-card">
+              <span>{t.home.targetLabel}</span>
+              <strong>{t.home.targetText}</strong>
+            </div>
           </div>
         </aside>
       </section>
